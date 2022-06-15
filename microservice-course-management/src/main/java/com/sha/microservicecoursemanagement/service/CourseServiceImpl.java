@@ -34,6 +34,13 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public boolean removeCourse(Long userId, Long cid)
+    {
+        transactionRepository.unEnroll(userId, cid);
+        return true;
+    }
+
+    @Override
     public List<Transaction> findTransactionsOfCourse(Long courseId) {
         return transactionRepository.findAllByCourseId(courseId);
     }

@@ -15,4 +15,6 @@ public interface CourseService {
     List<Transaction> findTransactionsOfCourse(Long courseId);
 
     Transaction saveTransaction(Transaction transaction);
+
+    boolean removeCourse(Long userId, Long cid);
 }

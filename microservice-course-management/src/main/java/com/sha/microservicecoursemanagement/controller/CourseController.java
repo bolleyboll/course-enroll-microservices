@@ -1,5 +1,5 @@
 package com.sha.microservicecoursemanagement.controller;
-
+import com.sha.microservicecoursemanagement.model.*;
 import com.sha.microservicecoursemanagement.intercomm.UserClient;
 import com.sha.microservicecoursemanagement.model.Transaction;
 import com.sha.microservicecoursemanagement.service.CourseService;
@@ -59,6 +59,16 @@ public class CourseController {
         transaction.setDateOfIssue(LocalDateTime.now());
         transaction.setCourse(courseService.findCourseById(transaction.getCourse().getId()));
         return new ResponseEntity<>(courseService.saveTransaction(transaction), HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/service/unenroll/{uid}/{cid}")
+    public ResponseEntity<?> unenrollCourse(@PathVariable Long uid, @PathVariable Long cid)
+    {
+//        Course course = courseService.findCourseById(cid);
+        boolean status = courseService.removeCourse(uid, cid);
+        System.out.println(status);
+        return ResponseEntity.ok(courseService.findCourseById(cid));
+
     }
 
     @GetMapping("/service/course/{courseId}")
