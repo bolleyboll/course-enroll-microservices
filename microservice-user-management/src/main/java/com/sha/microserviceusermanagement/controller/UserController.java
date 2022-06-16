@@ -76,4 +76,12 @@ public class UserController {
     public ResponseEntity<?> test(){
         return ResponseEntity.ok("It is working...");
     }
+
+//    @GetMapping("/service/upload")
+//    public ResponseEntity<?> loadData()
+//    {
+//        String path = "/home/gopal/Desktop/course-enroll-microservices/grade.txt";
+//        userService.uploadData(path);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 }

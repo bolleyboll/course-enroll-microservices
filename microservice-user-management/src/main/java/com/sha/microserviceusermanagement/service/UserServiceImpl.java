@@ -2,6 +2,7 @@ package com.sha.microserviceusermanagement.service;
 
 import com.sha.microserviceusermanagement.model.User;
 import com.sha.microserviceusermanagement.repository.UserRepository;
+import com.sha.microserviceusermanagement.repository.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private GradeRepository gradeRepository;
     //We will create bean for it in security config.
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -33,4 +36,10 @@ public class UserServiceImpl implements UserService {
     public List<String> findUsers(List<Long> idList){
         return userRepository.findByIdList(idList);
     }
+
+//    @Override
+//    public void uploadData(String path)
+//    {
+//        gradeRepository.bulkLoadData(path);
+//    }
 }
