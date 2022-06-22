@@ -24,4 +24,48 @@ public class Transaction implements Serializable {
 
     @Column(name = "date_of_issue")
     private LocalDateTime dateOfIssue;
+
+    public Transaction()
+    {
+
+    }
+
+    public Transaction(Long id, Course course, Long userId, LocalDateTime dateOfIssue) {
+        this.id = id;
+        this.course = course;
+        this.userId = userId;
+        this.dateOfIssue = dateOfIssue;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public LocalDateTime getDateOfIssue() {
+        return dateOfIssue;
+    }
+
+    public void setDateOfIssue(LocalDateTime dateOfIssue) {
+        this.dateOfIssue = dateOfIssue;
+    }
 }

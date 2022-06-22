@@ -11,11 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @RestController
 public class CourseController {
 
@@ -61,13 +61,14 @@ public class CourseController {
         return new ResponseEntity<>(courseService.saveTransaction(transaction), HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/service/unenroll/{uid}/{cid}")
-    public ResponseEntity<?> unenrollCourse(@PathVariable Long uid, @PathVariable Long cid)
+    @PostMapping(value = "/service/unenroll")
+    public ResponseEntity<?> unenrollCourse(@RequestBody Transaction transaction)
     {
 //        Course course = courseService.findCourseById(cid);
-        boolean status = courseService.removeCourse(uid, cid);
+
+        boolean status = courseService.removeCourse(transaction.getUserId(), transaction.getCourse().getId());
         System.out.println(status);
-        return ResponseEntity.ok(courseService.findCourseById(cid));
+        return new ResponseEntity<>(courseService.removeCourse(transaction.getUserId(), transaction.getCourse().getId()), HttpStatus.OK);
 
     }
 

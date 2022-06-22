@@ -8,6 +8,11 @@ class CourseService {
   {headers: {'Content-Type':'application/json; charset=UTF-8'}});
   }
 
+  deleteTransaction(transaction){
+    return axios.post(API_URL + 'unenroll', JSON.stringify(transaction),
+        {headers: {'Content-Type':'application/json; charset=UTF-8'}});
+  }
+
   filterTransactions(userId){
     return axios.get(API_URL + 'user/'+ userId,
   {headers: {'Content-Type':'application/json; charset=UTF-8'}});
